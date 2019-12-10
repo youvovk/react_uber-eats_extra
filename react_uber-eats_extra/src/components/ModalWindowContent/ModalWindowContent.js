@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './ModalWindowContent.scss';
 
@@ -11,7 +12,11 @@ const basicModalData = {
   customizationsList: [],
 };
 
-export const ModalWindowContent = ({ modalWindowData, openModalWindow }) => {
+export const ModalWindowContent = ({
+  modalWindowData,
+  openModalWindow,
+  modalWindowUuid,
+}) => {
   const { 
     imageUrl,
     title,
@@ -29,7 +34,12 @@ export const ModalWindowContent = ({ modalWindowData, openModalWindow }) => {
           className="modal-window__img"
         />
 
-        <div className="toggle__close" onClick={() => openModalWindow(null, false)} />
+        <Link to={`/restaurants/${modalWindowUuid}`}>
+          <div 
+            className="toggle__close" 
+            onClick={() => openModalWindow('', false)} 
+          />
+        </Link>
 
         <div className="menu__title-wrapper">
           <h2 className="menu__title">
@@ -83,7 +93,7 @@ export const ModalWindowContent = ({ modalWindowData, openModalWindow }) => {
                           </>
                         )
                       }
-                      
+
                     </div>
 
                     <p className="point__price">
@@ -111,14 +121,37 @@ export const ModalWindowContent = ({ modalWindowData, openModalWindow }) => {
             <p>1</p>
             <div className="toggle__plus" />
           </div>
-          <div className="order__add add" onClick={() => openModalWindow(null, false)}>
-            <p className="add-center">Add 1 to order</p>
-            <p className="add-right">{`${price},00 UAH`}</p>
-          </div>
+
+          <Link to={`/restaurants/${modalWindowUuid}`}>
+            <div 
+              className="order__add add" 
+              onClick={() => openModalWindow('', false)}
+            >
+              <p className="add-center">Add 1 to order</p>
+              <p className="add-right">{`${price},00 UAH`}</p>
+            </div>
+          </Link>
+
         </div>
       </div>
 
-      <div className="click-outside" onClick={() => openModalWindow(null, false)} />
+      <Link to={`/restaurants/${modalWindowUuid}`}>
+        <div 
+          className="click-outside" 
+          onClick={() => openModalWindow('', false)} 
+        />
+      </Link>
     </div>
   );
+};
+
+ModalWindowContent.propTypes = {
+  modalWindowData: PropTypes.shape({}).isRequired,
+  openModalWindow: PropTypes.bool,
+  modalWindowUuid: PropTypes.string,
+};
+
+ModalWindowContent.defaultProps = {
+  openModalWindow: null,
+  modalWindowUuid: '',
 };

@@ -6,7 +6,13 @@ export const ACTION_TYPES = {
   STOP_LOADING: 'STOP_LOADING',
   OPEN_MODAL_WINDOW: 'OPEN_MODAL_WINDOW',
   SAVE_MODAL_DATA: 'SAVE_MODAL_DATA',
+  TOGGLE_MODAL_LINK: 'TOGGLE_MODAL_LINK',
 };
+
+export const toggleModalLink = value => ({
+  type: ACTION_TYPES.TOGGLE_MODAL_LINK,
+  payload: value,
+});
 
 export const openModalWindow = (uuid, rule) => ({
   type: ACTION_TYPES.OPEN_MODAL_WINDOW,

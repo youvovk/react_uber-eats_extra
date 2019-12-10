@@ -13,29 +13,43 @@ import './App.scss';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
-export const App = ({ openedModalWindow }) => (
+export const App = ({ openedModalWindow, modalLink }) => (
   <>
-    {openedModalWindow && (
-      <ModalWindow />
-    )}
+    {modalLink && openedModalWindow ? (
+      <Route
+        exact
+        path="/restaurants/:id/:idModal"
+        component={ModalWindow}
+      />
+    )
+      : (
+        <>
+          {openedModalWindow && (
+            <ModalWindow />
+          )}
 
-    <Header />
-    <div className="page">
-      <main>
-        <Route
-          exact
-          path="/"
-          component={RestaurantsListPage}
-        />
+          <Header />
+          <div className="page">
+            <main>
+              <Route
+                exact
+                path="/"
+                component={RestaurantsListPage}
+              />
 
-        <Route
-          path="/restaurants/:id"
-          component={RestaurantPage}
-        />
-      </main>
-    </div>
-    <Footer />
+              <Route
+                path="/restaurants/:id"
+                component={RestaurantPage}
+              />
+            </main>
+          </div>
+          <Footer />
+        </>
+      )}
   </>
 );
 
-App.propTypes = { openedModalWindow: PropTypes.bool.isRequired };
+App.propTypes = {
+  openedModalWindow: PropTypes.bool.isRequired,
+  modalLink: PropTypes.bool.isRequired,
+};

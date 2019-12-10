@@ -5,6 +5,8 @@ import { openModalWindow } from '../../store/actions';
 function mapState2Props(state) {
   return {
     modalWindowData: state.modalWindowData,
+    modalWindowUuid: state.modalWindowUuid,
+    modalLink: state.modalLink,
   };
 }
 

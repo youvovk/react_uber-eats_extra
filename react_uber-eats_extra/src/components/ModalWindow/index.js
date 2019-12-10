@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import { ModalWindow } from './ModalWindow';
-import { loadModalData } from '../../store/actions';
-import {
-  selectorRestaurant,
-} from '../../store/selectors';
+import { loadModalData, toggleModalLink } from '../../store/actions';
 
 function mapState2Props(state) {
   return {
@@ -14,6 +11,7 @@ function mapState2Props(state) {
 
 const mapDispatch2Props = dispatch => ({
   loadModalData: uuid => dispatch(loadModalData(uuid)),
+  toggleModalLink: value => dispatch(toggleModalLink(value)),
 });
 
 const Enhanced = connect(

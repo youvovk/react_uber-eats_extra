@@ -8,10 +8,20 @@ const initialStore = {
   openedModalWindow: false,
   modalWindowUuid: '',
   modalWindowData: null,
+  modalLink: false,
 };
 
 export function rootReducer(state = initialStore, action) {
   switch (action.type) {
+    case ACTION_TYPES.TOGGLE_MODAL_LINK: {
+      const { payload } = action;
+
+      return {
+        ...state,
+        modalLink: payload,
+      };
+    }
+
     case ACTION_TYPES.SAVE_MODAL_DATA: {
       const { payload } = action;
 

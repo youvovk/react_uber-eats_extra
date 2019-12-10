@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-scroll';
+import { Link as LinkScroll } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 import './RestaurantPage.scss';
 
@@ -41,7 +42,11 @@ const giveCutString = (string, length) => {
 
 export class RestaurantPage extends Component {
   componentDidMount() {
-    const { loadRestaurant, loadRestaurants, match } = this.props;
+    const {
+      loadRestaurant,
+      loadRestaurants,
+      match,
+    } = this.props;
 
     loadRestaurants();
     loadRestaurant(match.params.id);
@@ -114,16 +119,16 @@ export class RestaurantPage extends Component {
 
                 return (
                   <li key={item[0]} className="menu__item">
-                    <Link
+                    <LinkScroll
                       activeClass="active"
                       to={item[0]}
-                      spy={true}
-                      smooth={true}
+                      spy
+                      smooth
                       offset={-100}
                       duration={500}
                     >
                       <p className="menu__item-btn">{menuTitle}</p>
-                    </Link>
+                    </LinkScroll>
                   </li>
                 );
               })}
@@ -144,36 +149,42 @@ export class RestaurantPage extends Component {
                       const foundItem = entitiesMapToArray
                         .find(elem => elem[0] === itemMenu);
 
-                      const cutDescription = giveCutString(foundItem[1].description, 7);
+                      const cutDescription = giveCutString(foundItem[1]
+                        .description, 7);
 
                       return (
-                        <div 
-                          className="item" 
-                          onClick={() => openModalWindow(foundItem[1].uuid, true)}
-                        >
-                          <div className="item__left">
-                            <h3 className="item__title">
-                              {giveCutString(checkLoaded(foundItem, 'title'), 4)}
-                            </h3>
-                            <p className="item__description">
-                              {foundItem && cutDescription}
-                            </p>
-                            <p className="item__price">
-                              {`${priceBucket.length > 1
-                                ? priceBucket[0]
-                                : priceBucket} 
-                                ${checkLoaded(foundItem, 'price')}`}
-                            </p>
-                          </div>
+                        <Link to={`/restaurants/${uuid}/${foundItem[1].uuid}`}>
+                          <div 
+                            className="item" 
+                            onClick={() => openModalWindow(foundItem[1].uuid, true)}
+                          >
+                            <div className="item__left">
+                              <h3 className="item__title">
+                                {
+                                  giveCutString(checkLoaded(foundItem, 'title')
+                                    , 4)
+                                }
+                              </h3>
+                              <p className="item__description">
+                                {foundItem && cutDescription}
+                              </p>
+                              <p className="item__price">
+                                {`${priceBucket.length > 1
+                                  ? priceBucket[0]
+                                  : priceBucket} 
+                                  ${checkLoaded(foundItem, 'price')}`}
+                              </p>
+                            </div>
 
-                          <div className="item-right">
-                            <img
-                              className="item__img"
-                              src={checkLoaded(foundItem, 'imageUrl')}
-                              alt={checkLoaded(foundItem, 'title')}
-                            />
+                            <div className="item-right">
+                              <img
+                                className="item__img"
+                                src={checkLoaded(foundItem, 'imageUrl')}
+                                alt={checkLoaded(foundItem, 'title')}
+                              />
+                            </div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     })}
                   </div>

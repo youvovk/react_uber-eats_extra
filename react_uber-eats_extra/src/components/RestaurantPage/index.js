@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { RestaurantPage } from './RestaurantPage';
-import { loadRestaurant, openModalWindow, loadRestaurants } from '../../store/actions';
+import {
+  loadRestaurant,
+  openModalWindow,
+  loadRestaurants,
+} from '../../store/actions';
 import {
   selectorRestaurant,
   selectorRestaurants,
@@ -10,6 +14,7 @@ function mapState2Props(state) {
   return {
     restaurantData: selectorRestaurant(state),
     restaurantsData: selectorRestaurants(state),
+    modalLink: state.modalLink,
   };
 }
 

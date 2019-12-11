@@ -3,7 +3,7 @@
 .modal-window {
   padding: 0 10px;
 
-  @media (max-width: 440px) {
+  @media (max-width: 720px) {
     padding: 0;
   }
 
@@ -28,6 +28,7 @@
   }
 
   &__content {
+    display: grid;
     max-width: 716px;
     height: 90%;
     position: fixed;
@@ -176,8 +177,9 @@
 }
 
 .add {
-  min-height: 56px;
+  max-height: 74px;
   padding: 16px;
+  align-self: center;
 
   cursor: pointer;
   color: #fff;

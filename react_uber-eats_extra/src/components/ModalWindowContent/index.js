@@ -7,6 +7,8 @@ function mapState2Props(state) {
     modalWindowData: state.modalWindowData,
     modalWindowUuid: state.modalWindowUuid,
     modalLink: state.modalLink,
+    isLoading: state.isLoading,
+    error: state.error,
   };
 }
 

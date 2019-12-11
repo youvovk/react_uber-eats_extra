@@ -78,6 +78,6 @@ export const loadModalData = uuid => (dispatch) => {
     .then(({ data }) => {
       dispatch(saveModalData(data));
     })
-    .catch(error => dispatch(setRestaurantsError(error.massage)))
+    .catch(() => dispatch(setRestaurantsError('Sorry, something went wrong(')))
     .finally(() => dispatch(stopLoading()));
 };

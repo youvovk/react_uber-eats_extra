@@ -93,7 +93,8 @@
 
         border-radius: 50%;
         background: #fff;
-        transition: transform 200ms;      
+        transition: background-color 300ms;   
+        z-index: 6;   
 
         &::before {
             @extend %toggle;
@@ -106,8 +107,7 @@
         }
 
         &:hover {
-            transform: scale(1.1);
-            background: darken(#fff, 10);
+            background-color: darken(#fff, 10);
         }
     }
 }

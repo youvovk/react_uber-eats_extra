@@ -67,6 +67,7 @@ export class RestaurantPage extends Component {
         uuid,
       },
     } = this.props;
+    
     const hero = heroImageUrls && heroImageUrls[heroImageUrls.length - 1].url;
     const entitiesMapToArray = entitiesMap && Object.entries(entitiesMap);
     const foundRestaurant = restaurantsData.find(eta => eta.uuid === uuid);

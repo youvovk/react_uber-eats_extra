@@ -27,7 +27,7 @@
     @media (max-width: 770px) {
       width: 500px;
       left: 50%;
-      top: 55%;
+      top: 57%;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
 
@@ -266,6 +266,7 @@
   }
 
   &-right {
+    width: 50%;
     display: flex;
     border-left: 1px solid #e0e0e0;
     max-width: 156px;

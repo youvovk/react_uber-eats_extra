@@ -34,12 +34,10 @@ export const ModalWindowContent = ({
           className="modal-window__img"
         />
 
-        <Link to={`/restaurants/${modalWindowUuid}`}>
-          <div 
-            className="toggle__close" 
-            onClick={() => openModalWindow('', false)} 
-          />
-        </Link>
+        <div 
+          className="toggle__close" 
+          onClick={() => openModalWindow('', false)} 
+        />
 
         <div className="menu__title-wrapper">
           <h2 className="menu__title">
@@ -122,25 +120,21 @@ export const ModalWindowContent = ({
             <div className="toggle__plus" />
           </div>
 
-          <Link to={`/restaurants/${modalWindowUuid}`}>
-            <div 
-              className="order__add add" 
-              onClick={() => openModalWindow('', false)}
-            >
-              <p className="add-center">Add 1 to order</p>
-              <p className="add-right">{`${price},00 UAH`}</p>
-            </div>
-          </Link>
+          <div 
+            className="order__add add" 
+            onClick={() => openModalWindow('', false)}
+          >
+            <p className="add-center">Add 1 to order</p>
+            <p className="add-right">{`${price},00 UAH`}</p>
+          </div>
 
         </div>
       </div>
 
-      <Link to={`/restaurants/${modalWindowUuid}`}>
-        <div 
-          className="click-outside" 
-          onClick={() => openModalWindow('', false)} 
-        />
-      </Link>
+      <div 
+        className="click-outside" 
+        onClick={() => openModalWindow('', false)} 
+      />
     </div>
   );
 };

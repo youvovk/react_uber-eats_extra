@@ -35,9 +35,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
-    // @media (max-width: 440px) {
-    //   height: 100%;
-    // }
+    @media (max-width: 720px) {
+      height: 100%;
+    }
 
     &::-webkit-scrollbar { 
       width: 5px; 
@@ -160,9 +160,39 @@
 
   padding: 24px 34px;
 
+  @media (max-width: 370px) {
+    grid-template-columns: 125px minmax(90px, 485px);
+    padding: 24px 15px;
+  }
+
   &__add {
     display: grid;
     grid-template-columns: 60% 40%;
+
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.add {
+  min-height: 56px;
+  padding: 16px;
+
+  cursor: pointer;
+  color: #fff;
+  background: #247a00;
+
+  &-center,
+  &-right {
+    justify-self: flex-end;
+  }
+
+  @media (max-width: 720px) {
+    &-center,
+    &-right {
+      justify-self: center;
+    }
   }
 }
 
@@ -171,6 +201,10 @@
   align-items: center;
 
   margin-right: 24px;
+
+  @media (max-width: 360px) {
+    margin-right: 10px;
+  }
 
   &__minus {
     @extend %toggle-circle;
@@ -197,19 +231,5 @@
       @extend %toggle;
       transform: rotate(90deg);
     }
-  }
-}
-
-.add {
-  height: 56px;
-  padding: 16px;
-
-  cursor: pointer;
-  color: #fff;
-  background: #247a00;
-
-  &-center,
-  &-right {
-    justify-self: flex-end;
   }
 }

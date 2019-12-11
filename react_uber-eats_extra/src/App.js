@@ -15,37 +15,26 @@ import { Footer } from './components/Footer/Footer';
 
 export const App = ({ openedModalWindow, modalLink }) => (
   <>
-    {modalLink && openedModalWindow ? (
-      <Route
-        exact
-        path="/restaurants/:id/:idModal"
-        component={ModalWindow}
-      />
-    )
-      : (
-        <>
-          {openedModalWindow && (
-            <ModalWindow />
-          )}
+    {openedModalWindow && (
+      <ModalWindow />
+    )}
 
-          <Header />
-          <div className="page">
-            <main>
-              <Route
-                exact
-                path="/"
-                component={RestaurantsListPage}
-              />
+    <Header />
+    <div className="page">
+      <main>
+        <Route
+          exact
+          path="/"
+          component={RestaurantsListPage}
+        />
 
-              <Route
-                path="/restaurants/:id"
-                component={RestaurantPage}
-              />
-            </main>
-          </div>
-          <Footer />
-        </>
-      )}
+        <Route
+          path="/restaurants/:id"
+          component={RestaurantPage}
+        />
+      </main>
+    </div>
+    <Footer />
   </>
 );
 

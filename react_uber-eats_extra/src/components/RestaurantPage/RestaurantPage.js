@@ -67,7 +67,6 @@ export class RestaurantPage extends Component {
         uuid,
       },
     } = this.props;
-    
     const hero = heroImageUrls && heroImageUrls[heroImageUrls.length - 1].url;
     const entitiesMapToArray = entitiesMap && Object.entries(entitiesMap);
     const foundRestaurant = restaurantsData.find(eta => eta.uuid === uuid);
@@ -154,7 +153,7 @@ export class RestaurantPage extends Component {
                         .description, 7);
 
                       return (
-                        <Link to={`/restaurants/${uuid}/${foundItem[1].uuid}`}>
+                        <Link to={`/restaurants/${uuid}`}>
                           <div 
                             className="item" 
                             onClick={() => openModalWindow(foundItem[1].uuid, true)}

@@ -92,6 +92,11 @@
 .league {
   border: 1px solid $color-gray;
   padding: 11px 16px;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: lighten($color-gray, 5);
+  }
 
   .black {
     color: #000;

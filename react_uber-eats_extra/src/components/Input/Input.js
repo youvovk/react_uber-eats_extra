@@ -75,12 +75,25 @@ export class Input extends PureComponent {
             className={inputClass}
           />
 
-          <ul className="dropdown-leagues">
-            {locationsArray.map((location, index) => {
+          {locationsRule && (
+            <ul className="dropdown-leagues">
+              {locationsArray.map((location, index) => {
 
-              if (index % 2 === 1) {
+                if (index % 2 === 1) {
+                  return (
+                    <li key={location[0]} className="league league_even">
+                      <img
+                        src={iconUrl}
+                        alt={placeholder}
+                        className="control_icon"
+                      />
+                      <a href="#" className="black" >{location[1].title}</a>
+                    </li>
+                  );
+                }
+
                 return (
-                  <li key={location[0]} className="league league_even">
+                  <li key={location[0]} className="league">
                     <img
                       src={iconUrl}
                       alt={placeholder}
@@ -88,21 +101,10 @@ export class Input extends PureComponent {
                     />
                     <a href="#" className="black" >{location[1].title}</a>
                   </li>
-                )
-              }
-
-              return (
-                <li key={location[0]} className="league">
-                  <img
-                    src={iconUrl}
-                    alt={placeholder}
-                    className="control_icon"
-                  />
-                  <a href="#" className="black" >{location[1].title}</a>
-                </li>
-              )
-            })}
-          </ul>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </label>
     );

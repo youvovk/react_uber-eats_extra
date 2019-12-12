@@ -78,30 +78,20 @@ export class Input extends PureComponent {
           {locationsRule && (
             <ul className="dropdown-leagues">
               {locationsArray.map((location, index) => {
+                const { title, id } = location[1];
 
-                if (index % 2 === 1) {
+                if (title.toLowerCase().includes(value.toLowerCase())) {
                   return (
-                    <li key={location[0]} className="league league_even">
+                    <li key={id} className="league">
                       <img
                         src={iconUrl}
                         alt={placeholder}
                         className="control_icon"
                       />
-                      <a href="#" className="black" >{location[1].title}</a>
+                      <a href="#" className="black" >{title}</a>
                     </li>
                   );
                 }
-
-                return (
-                  <li key={location[0]} className="league">
-                    <img
-                      src={iconUrl}
-                      alt={placeholder}
-                      className="control_icon"
-                    />
-                    <a href="#" className="black" >{location[1].title}</a>
-                  </li>
-                );
               })}
             </ul>
           )}

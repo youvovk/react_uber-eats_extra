@@ -85,6 +85,10 @@
   }
 }
 
+.dropdown-leagues li:nth-child(2n) {
+  border-top: none;
+}
+
 .league {
   border: 1px solid $color-gray;
   padding: 11px 16px;

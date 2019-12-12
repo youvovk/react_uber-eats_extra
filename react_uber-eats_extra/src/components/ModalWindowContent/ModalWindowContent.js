@@ -31,7 +31,7 @@ export const ModalWindowContent = ({
       {error
         ? (
           <div className="modal-window_error">
-            
+
             <div 
               className="toggle__close" 
               // eslint-disable-next-line no-trailing-spaces

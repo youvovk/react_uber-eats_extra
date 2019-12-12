@@ -10,10 +10,10 @@ import { ModalWindow } from './components/ModalWindow/index';
 
 import './App.scss';
 
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header/index';
 import { Footer } from './components/Footer/Footer';
 
-export const App = ({ openedModalWindow, modalLink }) => (
+export const App = ({ openedModalWindow }) => (
   <>
     {openedModalWindow && (
       <ModalWindow />
@@ -40,5 +40,4 @@ export const App = ({ openedModalWindow, modalLink }) => (
 
 App.propTypes = {
   openedModalWindow: PropTypes.bool.isRequired,
-  modalLink: PropTypes.bool.isRequired,
 };

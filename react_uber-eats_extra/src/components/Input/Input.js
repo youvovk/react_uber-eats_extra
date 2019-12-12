@@ -27,13 +27,19 @@ export class Input extends PureComponent {
       isSmall,
       label,
       tablet,
+      locations: { locationsMap },
     } = this.props;
 
     const { isFocused } = this.state;
+    const locationsRule = locationsMap && true;
+    const locationsArray = locationsMap ? Object.entries(locationsMap) : [];
+
+    console.log(locationsArray)
 
     const inputWrappeClass = cx(`control__input-wrapper ${tablet || ''}`, {
       'control__input-wrapper--focused': isFocused,
       [className]: !!className,
+      dropdown: locationsRule,
     });
 
     const inputClass = cx('control_input', {
@@ -68,6 +74,35 @@ export class Input extends PureComponent {
             placeholder={placeholder}
             className={inputClass}
           />
+
+          <ul className="dropdown-leagues">
+            {locationsArray.map((location, index) => {
+
+              if (index % 2 === 1) {
+                return (
+                  <li key={location[0]} className="league league_even">
+                    <img
+                      src={iconUrl}
+                      alt={placeholder}
+                      className="control_icon"
+                    />
+                    <a href="#" className="black" >{location[1].title}</a>
+                  </li>
+                )
+              }
+
+              return (
+                <li key={location[0]} className="league">
+                  <img
+                    src={iconUrl}
+                    alt={placeholder}
+                    className="control_icon"
+                  />
+                  <a href="#" className="black" >{location[1].title}</a>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </label>
     );
@@ -85,9 +120,11 @@ Input.propTypes = {
   isSmall: PropTypes.bool,
   label: PropTypes.string,
   tablet: PropTypes.string,
+  locations: PropTypes.shape({}),
 };
 
 Input.defaultProps = {
+  locations: {},
   type: 'text',
   placeholder: '',
   iconUrl: '',

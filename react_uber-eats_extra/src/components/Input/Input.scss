@@ -54,3 +54,46 @@
     width: 150px;
   }
 }
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+      transition-delay: 3s;
+      .dropdown-leagues { 
+          display: block;
+      }
+  }
+  >img {
+      max-width: 25px;
+  }
+  .dropdown-leagues {
+      width: 100%;
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      margin: 0;
+      //border: 1px solid $color-gray;
+        
+      background-color: #fff;
+      z-index: 99;
+
+      transition-delay: 3s;
+  }
+}
+
+.league {
+  border: 1px solid $color-gray;
+  padding: 11px 16px;
+
+  .black {
+    color: #000;
+  }
+}
+
+.league_even {
+  border-top: none !important;
+}

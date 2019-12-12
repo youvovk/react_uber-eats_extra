@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './Header.scss';
 import { Input } from '../Input/Input';
@@ -42,6 +43,8 @@ export class Header extends Component {
       isMobileDeliveryInfoVisible,
     } = this.state;
 
+    const { locations } = this.props;
+
     return (
       <header className="header">
         <div className="content">
@@ -62,6 +65,7 @@ export class Header extends Component {
                 placeholder="Address"
                 iconUrl="./images/input.svg"
                 tablet="tablet"
+                locations={locations}
               />
               <Input
                 name="time"
@@ -137,6 +141,7 @@ export class Header extends Component {
                     placeholder="Address"
                     iconUrl="./images/input.svg"
                     isSmall={false}
+                    locations={locations}
                   />
                   <Input
                     label="To"
@@ -167,3 +172,11 @@ export class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  locations: PropTypes.shape({}),
+};
+
+Header.defaultProps = {
+  locations: {},
+};

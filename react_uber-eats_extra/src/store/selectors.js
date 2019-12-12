@@ -15,6 +15,17 @@ export const selectorRestaurants = createSelector(
   }
 );
 
+export const selectorLocations = createSelector(
+  rootSelector,
+  ({ locations }) => {
+    if (!locations) {
+      return [];
+    }
+
+    return locations;
+  }
+);
+
 export const selectorRestaurant = createSelector(
   rootSelector,
   ({ restaurantData }) => {

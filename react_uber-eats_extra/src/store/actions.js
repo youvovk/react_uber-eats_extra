@@ -7,6 +7,7 @@ export const ACTION_TYPES = {
   OPEN_MODAL_WINDOW: 'OPEN_MODAL_WINDOW',
   SAVE_MODAL_DATA: 'SAVE_MODAL_DATA',
   TOGGLE_MODAL_LINK: 'TOGGLE_MODAL_LINK',
+  SAVE_LOCATIONS: 'SAVE_LOCATIONS',
 };
 
 export const toggleModalLink = value => ({
@@ -48,6 +49,11 @@ const stopLoading = () => ({
   type: ACTION_TYPES.STOP_LOADING,
 });
 
+const saveLocations = locations => ({
+  type: ACTION_TYPES.SAVE_LOCATIONS,
+  payload: locations,
+});
+
 export const loadRestaurants = () => (dispatch) => {
   dispatch(startLoading());
 
@@ -78,6 +84,18 @@ export const loadModalData = uuid => (dispatch) => {
     .then(({ data }) => {
       dispatch(saveModalData(data));
     })
-    .catch(() => dispatch(setRestaurantsError('Sorry, something went wrong(')))
+    .catch(() => {
+      dispatch(stopLoading());
+      dispatch(setRestaurantsError('Sorry, something went wrong('));
+    })
     .finally(() => dispatch(stopLoading()));
+};
+
+export const loadLocations = () => (dispatch) => {
+  fetch('https://mate-uber-eats-api.herokuapp.com/api/v1/locations')
+    .then(res => res.json())
+    .then(({ data }) => {
+      dispatch(saveLocations(data));
+    })
+    .catch(() => console.log('fail'));
 };

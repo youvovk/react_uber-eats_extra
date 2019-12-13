@@ -57,7 +57,7 @@ const saveLocations = locations => ({
 export const loadRestaurants = () => (dispatch) => {
   dispatch(startLoading());
 
-  fetch('https://mate-uber-eats-api.herokuapp.com/api/v1/restaurants')
+  fetch(`https://mate-uber-eats-api.herokuapp.com/api/v1/restaurants`)
     .then(res => res.json())
     .then(({ data }) => dispatch(saveRestaurants(data)))
     .catch(error => dispatch(setRestaurantsError(error.massage)))
@@ -95,6 +95,7 @@ export const loadLocations = () => (dispatch) => {
   fetch('https://mate-uber-eats-api.herokuapp.com/api/v1/locations')
     .then(res => res.json())
     .then(({ data }) => {
+      console.log(data)
       dispatch(saveLocations(data));
     })
     .catch(() => console.log('fail'));

@@ -5,7 +5,9 @@ import cx from 'classnames';
 import './Input.scss';
 
 export class Input extends PureComponent {
-  state = { isFocused: false };
+  state = {
+    isFocused: false,
+  };
 
   inputRef = createRef();
 
@@ -20,6 +22,7 @@ export class Input extends PureComponent {
       iconUrl,
       value,
       onChange,
+      onClick,
       type,
       placeholder,
       name,
@@ -33,8 +36,6 @@ export class Input extends PureComponent {
     const { isFocused } = this.state;
     const locationsRule = locationsMap && true;
     const locationsArray = locationsMap ? Object.entries(locationsMap) : [];
-
-    console.log(locationsArray)
 
     const inputWrappeClass = cx(`control__input-wrapper ${tablet || ''}`, {
       'control__input-wrapper--focused': isFocused,
@@ -77,21 +78,27 @@ export class Input extends PureComponent {
 
           {locationsRule && (
             <ul className="dropdown-leagues">
-              {locationsArray.map((location, index) => {
+              {locationsArray.map((location) => {
                 const { title, id } = location[1];
 
                 if (title.toLowerCase().includes(value.toLowerCase())) {
                   return (
-                    <li key={id} className="league">
+                    <li 
+                      key={id} 
+                      className="league" 
+                      onClick={() => onClick(title)}
+                    >
                       <img
                         src={iconUrl}
                         alt={placeholder}
                         className="control_icon"
                       />
-                      <a href="#" className="black" >{title}</a>
+                      <a href="#" className="black">{title}</a>
                     </li>
                   );
                 }
+
+                return <></>;
               })}
             </ul>
           )}
@@ -105,6 +112,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   iconUrl: PropTypes.string,

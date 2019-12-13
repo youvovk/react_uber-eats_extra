@@ -11,13 +11,13 @@ const DEFAULT_ETA_RANGE = '20 - 30 min';
 
 export class RestaurantsListPage extends Component {
   componentDidMount() {
-    const { 
-      loadRestaurants, 
-      loadLocations, 
+    const {
+      loadRestaurants,
+      loadLocations,
     } = this.props;
 
-    loadRestaurants();
     loadLocations();
+    loadRestaurants();
   }
 
   render() {
@@ -67,6 +67,7 @@ export class RestaurantsListPage extends Component {
 RestaurantsListPage.propTypes = {
   restaurantsData: PropTypes.arrayOf(PropTypes.shape({})),
   loadRestaurants: PropTypes.func.isRequired,
+  loadLocations: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   error: PropTypes.string,
 };

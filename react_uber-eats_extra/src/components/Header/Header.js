@@ -34,6 +34,11 @@ export class Header extends Component {
     isMobileDeliveryInfoVisible: false,
   });
 
+  setLocation = (locationActive) => {
+    console.log(locationActive)
+    this.setState({ address: locationActive })
+  };
+
   render() {
     const {
       address,
@@ -61,6 +66,7 @@ export class Header extends Component {
               <Input
                 name="address"
                 onChange={this.handleChange}
+                onClick={this.setLocation}
                 value={address}
                 placeholder="Address"
                 iconUrl="./images/input.svg"

@@ -35,7 +35,7 @@ export class Header extends Component {
   });
 
   setLocation = (locationActive) => {
-    console.log(locationActive)
+
     this.setState({ address: locationActive })
   };
 

@@ -73,6 +73,7 @@ export class Header extends Component {
                 tablet="tablet"
                 locations={locations}
               />
+
               <Input
                 name="time"
                 onChange={this.handleChange}
@@ -104,6 +105,7 @@ export class Header extends Component {
                   alt="place icon"
                 />
               </button>
+              
               <button
                 type="button"
                 className="header__toggle-btn"

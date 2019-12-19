@@ -105,7 +105,7 @@ export class Header extends Component {
                   alt="place icon"
                 />
               </button>
-              
+
               <button
                 type="button"
                 className="header__toggle-btn"
@@ -185,6 +185,4 @@ Header.propTypes = {
   locations: PropTypes.shape({}),
 };
 
-Header.defaultProps = {
-  locations: {},
-};
+Header.defaultProps = { locations: {} };

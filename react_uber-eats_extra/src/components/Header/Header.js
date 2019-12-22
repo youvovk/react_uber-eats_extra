@@ -185,4 +185,6 @@ Header.propTypes = {
   locations: PropTypes.shape({}),
 };
 
-Header.defaultProps = { locations: {} };
+Header.defaultProps = { 
+  locations: {} 
+};

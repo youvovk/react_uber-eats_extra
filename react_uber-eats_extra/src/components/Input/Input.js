@@ -35,7 +35,9 @@ export class Input extends PureComponent {
 
     const { isFocused } = this.state;
     const locationsRule = locationsMap && true;
-    const locationsArray = locationsMap ? Object.entries(locationsMap) : [];
+    const locationsArray = locationsMap 
+      ? Object.entries(locationsMap) 
+      : [];
 
     const inputWrappeClass = cx(`control__input-wrapper ${tablet || ''}`, {
       'control__input-wrapper--focused': isFocused,

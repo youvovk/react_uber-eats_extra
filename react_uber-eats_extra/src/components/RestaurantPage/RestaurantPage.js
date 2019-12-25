@@ -83,6 +83,7 @@ export class RestaurantPage extends Component {
 
           <div className="restaurant-page__title page__title">
             <h1 className="page__title_indent title">{title}</h1>
+            
             <p
               className="page__title_indent categories"
             >

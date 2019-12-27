@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { RestaurantsListPage } from './RestaurantsListPage';
+import { 
+  RestaurantsListPage, 
+} from './RestaurantsListPage';
 import { 
   loadRestaurants, 
   loadLocations, 
